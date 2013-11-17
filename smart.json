@@ -1,6 +1,9 @@
 {
   "packages": {
     "moment": {},
-    "router": {}
+    "router": {},
+    "iron-router": {},
+    "nprogress": {},
+    "bootstrap-3": {}
   }
 }

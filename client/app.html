@@ -1,0 +1,24 @@
+<template name="layout">
+  <nav>
+    {{yield 'nav'}}
+  </nav>
+  <div class="container">
+    {{yield}}
+  </div>
+
+  <footer>
+    {{yield 'footer'}}
+  </footer>
+</template>
+
+<template name="home">
+  <h1>Palaces</h1>
+</template>
+
+<template name="project_index">
+  Projects
+</template>
+
+<template name="project_show">
+  Project {{_id}}
+</template>

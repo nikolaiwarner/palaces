@@ -4,10 +4,19 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
 insecure
 preserve-inputs
 less
 coffeescript
 moment
-router
+iron-router
+nprogress
+bootstrap-3
+accounts-base
+accounts-ui
+accounts-google
+accounts-facebook
+accounts-github
+showdown
+jquery-layout
+accounts-ui-unstyled
