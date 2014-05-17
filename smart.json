@@ -4,6 +4,7 @@
     "router": {},
     "iron-router": {},
     "nprogress": {},
-    "bootstrap-3": {}
+    "bootstrap-3": {},
+    "accounts-entry": {}
   }
 }
