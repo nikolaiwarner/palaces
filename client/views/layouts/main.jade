@@ -1,0 +1,16 @@
+head
+  link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
+
+template(name="layout")
+  nav.navbar.navbar-default(role="navigation")
+    .container
+      .navbar-header
+        a.navbar-brand(href="/") Palaces
+      .navbar-collapse.collapse
+        .nav.navbar-nav.navbar-right
+          +loginButtons
+  .container
+    +yield
+
+template(name="home")
+  .page-header

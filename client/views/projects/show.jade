@@ -1,0 +1,18 @@
+template(name="project_show")
+  ol.breadcrumb
+    li
+      a(href="/") Home
+    li
+      a(href="/projects") Projects
+  h1
+    =name
+    span.pull-right
+      a.btn.btn-default(href="/projects/#{_id}/edit") Edit
+
+  if description
+    p
+      =description
+
+  +comments this
+
+  +unreadWidget

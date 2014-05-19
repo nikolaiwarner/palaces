@@ -1,0 +1,16 @@
+template(name="project_index")
+  h1 Your Projects
+  a.btn.btn-default(href="/projects/new") New Project
+  hr
+  table.table
+    each projects
+      tr
+        td.name
+          a(href="/projects/#{_id}")
+            =name
+        td.notes
+          =description
+
+  hr
+  h2 Make a new project
+  +project_form

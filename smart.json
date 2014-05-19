@@ -1,10 +1,14 @@
 {
   "packages": {
     "moment": {},
-    "router": {},
     "iron-router": {},
     "nprogress": {},
     "bootstrap-3": {},
-    "accounts-entry": {}
+    "accounts-entry": {},
+    "accounts-ui-bootstrap-3-blaze": {},
+    "jade": {},
+    "autoform": {},
+    "accounts-steam": {},
+    "comments": {}
   }
 }

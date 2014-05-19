@@ -4,8 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-insecure
-preserve-inputs
 less
 coffeescript
 moment
@@ -13,11 +11,15 @@ iron-router
 nprogress
 bootstrap-3
 accounts-base
-accounts-ui
 accounts-google
 accounts-facebook
 accounts-github
 showdown
 jquery-layout
-accounts-ui-unstyled
 accounts-entry
+accounts-ui-bootstrap-3-blaze
+jade
+autoform
+collection2
+accounts-steam
+comments
