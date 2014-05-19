@@ -33,8 +33,14 @@ Router.map ->
       # if !Meteor.user()
       #   Router.go('/')
       Session.set("selectedProjectId", @params._id)
+      Session.set("currentCommentableType", 'Projects')
+      Session.set("currentCommentableId", @params._id)
     waitOn: ->
-      Meteor.subscribe "projects", Meteor.userId()
+      Meteor.subscribe "users",
+      Meteor.subscribe "comments",
+        commentableType: 'Projects'
+        commentableId: @params._id
+      Meteor.subscribe "projects", Meteor.userId(), sort: {createdAt: -1}
     data: ->
       Projects.findOne @params._id
 

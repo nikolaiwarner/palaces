@@ -1,0 +1,28 @@
+<template name="comment_list">
+  <ul class="media-list comments">
+    <li class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          Comment
+        </h4>
+        {{>comment_form}}
+      </div>
+    </li>
+
+    {{#each comments}}
+      <li class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            {{username userId}}
+            <small>
+              {{formatTime createdAt}}
+            </small>
+          </h4>
+          <p>
+            {{comment}}
+          </p>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</template>

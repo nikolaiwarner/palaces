@@ -1,0 +1,16 @@
+<template name="comment_form">
+  {{#autoForm collection="Comments" id="commentForm" doc=currentComment type=method}}
+    {{> afFieldInput name='comment'}}
+
+    {{#if currentComment}}
+      <button type="submit" class="btn btn-primary update">Update</button>
+    {{else}}
+      <button type="submit" class="btn btn-primary insert">Post</button>
+    {{/if}}
+  {{/autoForm}}
+
+  {{#if currentComment}}
+    <hr>
+    {{> afDeleteButton collection="Comments" doc=currentComment type="remove"}}
+  {{/if}}
+</template>

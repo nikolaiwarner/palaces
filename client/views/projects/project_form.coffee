@@ -14,5 +14,5 @@ AutoForm.hooks
 Template.project_form.helpers
   method: ->
     if Session.get("selectedProjectId") then 'update' else 'insert'
-  currentItem: ->
+  currentProject: ->
     Projects.findOne({_id: Session.get("selectedProjectId")})
