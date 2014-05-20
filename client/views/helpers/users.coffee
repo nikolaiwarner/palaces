@@ -1,5 +1,11 @@
 UI.registerHelper "username", (_id, options) ->
-  if _id
-    user = Users.findOne(_id: _id)
-    console.log user
+  return null unless _id
+  if user=Users.findOne(_id: _id)
     user.profile.name
+
+UI.registerHelper "user_path", (_id, options) ->
+  "/friends/#{_id}"
+
+UI.registerHelper "userIsCurrentUser", (_id, options) ->
+  return null unless _id
+  Meteor.userId() == _id

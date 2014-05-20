@@ -2,7 +2,9 @@
   {{#autoForm collection="Projects" id="projectForm" doc=currentProject type=method}}
     {{> afQuickField name='name'}}
     {{> afQuickField name='description'}}
-    {{> afQuickField name='date'}}
+
+    {{> afFieldLabel name='date'}}
+    {{> afFieldInput name='date' type='datetime-local'}}
 
     {{#if currentProject}}
       <button type="submit" class="btn btn-primary update">Update</button>

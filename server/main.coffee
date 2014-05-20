@@ -1,8 +1,14 @@
-Meteor.publish "projects", (userId) ->
-  Projects.find {}, sort: {createdAt: -1}
-
 Meteor.publish "comments", (options={}) ->
   Comments.find options, sort: {createdAt: -1}
 
+Meteor.publish "participations", (options={}) ->
+  Participations.find options, sort: {createdAt: -1}
+
+Meteor.publish "projects", () ->
+  Projects.find {}, sort: {createdAt: -1}
+
+Meteor.publish "tokens", (options={}) ->
+  Tokens.find options, sort: {createdAt: -1}
+
 Meteor.publish "users", (options={}) ->
-  Meteor.users
+  Meteor.users.find({}, {fields: {'profile': 1}})

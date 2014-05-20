@@ -7,10 +7,38 @@ template(name="project_show")
   h1
     =name
     span.pull-right
-      a.btn.btn-default(href="/projects/#{_id}/edit") Edit
+      unless canEdit
+        unless userIsParticipating
+          .btn.btn-primary.btn-join Join
+
+      if canEdit
+        a.btn.btn-default(href="/projects/#{_id}/edit") Edit
+
+  if date
+    p
+      {{formatDate date}}
 
   if description
     p
       =description
+
+  .well
+    h2
+      | Participants
+
+    unless canEdit
+      unless userIsParticipating
+        .btn.btn-primary.btn-join Join
+
+    ul
+      each participants
+        li
+          a(href="{{user_path userId}}")
+            {{username userId}}
+          if userIsCurrentUser userId
+            .pull-right
+              .btn.btn-primary.btn-leave Leave
+
+  br
 
   +comment_list

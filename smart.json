@@ -8,8 +8,6 @@
     "accounts-ui-bootstrap-3-blaze": {},
     "jade": {},
     "autoform": {},
-    "accounts-steam": {},
-    "comments": {},
-    "houston": {}
+    "accounts-steam": {}
   }
 }

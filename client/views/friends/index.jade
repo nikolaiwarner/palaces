@@ -1,0 +1,27 @@
+template(name="friends_index")
+  h1 Friends
+
+  table.table
+    each my_friends
+      tr
+        td.name
+          a(href="/friends/#{_id}")
+            =name
+        td.date
+          a(href="/friends/#{_id}")
+            {{formatDate date}}
+
+  hr
+  table.table
+    each all_friends
+      tr
+        td.name
+          a(href="/friends/#{_id}")
+            =name
+        td.date
+          a(href="/friends/#{_id}")
+            {{formatDate date}}
+
+  hr
+  h2 Add a friend
+  +friend_form

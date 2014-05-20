@@ -16,7 +16,7 @@ Router.map ->
       #   Router.go('/')
       Session.set("selectedProjectId", undefined)
     waitOn: ->
-      Meteor.subscribe "projects", Meteor.userId()
+      Meteor.subscribe "projects"
 
   @route 'projects/new',
     path: '/projects/new'
@@ -36,7 +36,8 @@ Router.map ->
       Session.set("currentCommentableType", 'Projects')
       Session.set("currentCommentableId", @params._id)
     waitOn: ->
-      Meteor.subscribe "users",
+      Meteor.subscribe "participations"
+      Meteor.subscribe "users"
       Meteor.subscribe "comments",
         commentableType: 'Projects'
         commentableId: @params._id

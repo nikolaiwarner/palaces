@@ -1,16 +1,27 @@
 template(name="project_index")
   h1 Your Projects
-  a.btn.btn-default(href="/projects/new") New Project
-  hr
+
   table.table
-    each projects
+    each my_projects
       tr
         td.name
           a(href="/projects/#{_id}")
             =name
-        td.notes
-          =description
+        td.date
+          a(href="/projects/#{_id}")
+            {{formatDate date}}
 
   hr
-  h2 Make a new project
+  table.table
+    each all_projects
+      tr
+        td.name
+          a(href="/projects/#{_id}")
+            =name
+        td.date
+          a(href="/projects/#{_id}")
+            {{formatDate date}}
+
+  hr
+  h2 Add a project
   +project_form
