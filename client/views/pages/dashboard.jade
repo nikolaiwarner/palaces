@@ -1,0 +1,27 @@
+template(name="page_dashboard")
+  h1 Your Projects
+
+  table.table
+    each my_projects
+      tr
+        td.name
+          a(href="/projects/#{_id}")
+            =name
+        td.date
+          a(href="/projects/#{_id}")
+            {{formatDate date}}
+
+  hr
+  table.table
+    each all_projects
+      tr
+        td.name
+          a(href="/projects/#{_id}")
+            =name
+        td.date
+          a(href="/projects/#{_id}")
+            {{formatDate date}}
+
+  hr
+  h2 Add a project
+  +project_form

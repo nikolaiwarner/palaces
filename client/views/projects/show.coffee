@@ -19,4 +19,4 @@ Template.project_show.helpers
     participation = Participations.findOne
       userId: Meteor.userId()
       projectId: Session.get('selectedProjectId')
-    !!participation
+    participation

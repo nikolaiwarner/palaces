@@ -6,7 +6,20 @@ Router.onBeforeAction('loading')
 Router.map ->
   @route 'home',
     path: '/'
-    template: 'home'
+    template: 'page_landing'
+    onBeforeAction: ->
+      if Meteor.user()
+        Router.go('/dashboard')
+
+  @route 'dashboard',
+    path: '/dashboard'
+    template: 'page_dashboard'
+    onBeforeAction: ->
+      # if !Meteor.user()
+      #   Router.go('/')
+      Session.set("selectedProjectId", undefined)
+    waitOn: ->
+      Meteor.subscribe "projects"
 
   @route 'projects',
     path: '/projects'
@@ -39,7 +52,7 @@ Router.map ->
       Meteor.subscribe "participations"
       Meteor.subscribe "users"
       Meteor.subscribe "comments",
-        commentableType: 'Projects'
+        commentableType: "Projects"
         commentableId: @params._id
       Meteor.subscribe "projects", Meteor.userId(), sort: {createdAt: -1}
     data: ->
@@ -56,3 +69,23 @@ Router.map ->
       Meteor.subscribe "projects", Meteor.userId()
     data: ->
       Projects.findOne @params._id
+
+  @route 'friend',
+    path: '/friends/:_id'
+    template: 'friend_show'
+    onBeforeAction: ->
+      # if !Meteor.user()
+      #   Router.go('/')
+      Session.set("selectedUserId", @params._id)
+      Session.set("currentCommentableType", 'Users')
+      Session.set("currentCommentableId", @params._id)
+    waitOn: ->
+      Meteor.subscribe "participations"
+      Meteor.subscribe "projects"
+      Meteor.subscribe "comments",
+        commentableType: "Users"
+        commentableId: @params._id
+      Meteor.subscribe "friendships"
+      Meteor.subscribe "users"
+    data: ->
+      Users.findOne @params._id
