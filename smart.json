@@ -8,6 +8,10 @@
     "accounts-ui-bootstrap-3-blaze": {},
     "jade": {},
     "autoform": {},
-    "accounts-steam": {}
+    "accounts-steam": {},
+    "filter-collections": {},
+    "gravatar": {},
+    "meteor-markdown": {},
+    "marked": {}
   }
 }

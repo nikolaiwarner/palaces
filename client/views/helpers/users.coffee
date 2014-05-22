@@ -9,3 +9,7 @@ UI.registerHelper "user_path", (_id, options) ->
 UI.registerHelper "userIsCurrentUser", (_id, options) ->
   return null unless _id
   Meteor.userId() == _id
+
+UI.registerHelper "avatar", (email, options) ->
+  return null unless email
+  Gravatar.imageUrl(email)

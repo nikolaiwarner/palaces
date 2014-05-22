@@ -1,5 +1,6 @@
 template(name="friend_show")
-  h1
+  h1.page-header
+    {{avatar email}}
     {{username _id}}
     span.pull-right
       if canEdit
@@ -11,34 +12,37 @@ template(name="friend_show")
         else
           .btn.btn-primary.btn-befriend Add as a friend
 
-  if projects
-    h2 Projects
-    ul
-      each projects
-        li
-          a(href="/projects/#{_id}")
-            =name
-          if date
-            |  on {{formatDate date}}
+  .row
+    .col-md-6
+      if projects
+        h2 Projects
+        ul
+          each projects
+            li
+              a(href="/projects/#{_id}")
+                =name
+              if date
+                |  on {{formatDate date}}
 
-  if project_participations
-    h2 Helping
-    ul
-      each project_participations
-        li
-          a(href="/projects/#{_id}")
-            {{name}}
-            |  at {{username userId}}'s Palace
-            if date
-              |  on {{formatDate date}}
+      if project_participations
+        h2 Helping
+        ul
+          each project_participations
+            li
+              a(href="/projects/#{_id}")
+                {{name}}
+                |  at {{username userId}}'s Palace
+                if date
+                  |  on {{formatDate date}}
 
-  if friends
-    h2 Friends
-    ul
-      each friends
-        li
-          a(href="/friends/#{_id}")
-            {{username _id}}
+    .col-md-6
+      if friends
+        h2 Friends
+        ul.list-inline
+          each friends
+            li
+              a(href="/friends/#{_id}")
+                {{username _id}}
   br
 
   +comment_list

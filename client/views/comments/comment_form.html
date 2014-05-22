@@ -1,6 +1,8 @@
 <template name="comment_form">
-  {{#autoForm collection="Comments" id="commentForm" doc=currentComment type=method}}
-    {{> afFieldInput name='comment'}}
+  {{#autoForm collection="Comments" id="commentForm" doc=currentComment type=method class="row"}}
+    <div class="form-group col-md-6 col-sm-9 col-xs-9">
+      {{> afFieldInput name='comment' type="text" class="form-control" placeholder="Say anything..."}}
+    </div>
 
     {{#if currentComment}}
       <button type="submit" class="btn btn-primary update">Update</button>
@@ -10,7 +12,6 @@
   {{/autoForm}}
 
   {{#if currentComment}}
-    <hr>
     {{> afDeleteButton collection="Comments" doc=currentComment type="remove"}}
   {{/if}}
 </template>

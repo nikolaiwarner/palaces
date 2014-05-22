@@ -12,7 +12,7 @@ Template.friend_show.events
 Template.friend_show.helpers
   friends: ->
     friendships = Friendships.find
-      userId: Meteor.userId()
+      userId: Session.get('selectedUserId')
     friends = []
     friendships.forEach (friendship) ->
       friends.push Users.findOne({_id: friendship.toUserId})

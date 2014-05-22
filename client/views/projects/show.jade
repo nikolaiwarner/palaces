@@ -1,10 +1,7 @@
 template(name="project_show")
-  ol.breadcrumb
-    li
-      a(href="/") Home
-    li
-      a(href="/projects") Projects
-  h1
+  a(href="/friends/#{userId}")
+    {{username userId}}'s Palace
+  h1.page-header
     =name
     span.pull-right
       unless canEdit
@@ -12,32 +9,35 @@ template(name="project_show")
           .btn.btn-primary.btn-join Join
 
       if canEdit
-        a.btn.btn-default(href="/projects/#{_id}/edit") Edit
+        a.btn.btn-default(href="/projects/#{_id}/edit") Settings
 
-  if date
-    p
-      {{formatDate date}}
+  .row
+    .col-md-6
+      if date
+        p
+          {{formatDate date}}
 
-  if description
-    p
-      =description
+      if description
+        p
+          +markdown
+            {{description}}
+    .col-md-6
+      if participants
+        h4
+          | Who's helping
 
-  .well
-    h2
-      | Participants
+        unless canEdit
+          unless userIsParticipating
+            .btn.btn-primary.btn-join Join
 
-    unless canEdit
-      unless userIsParticipating
-        .btn.btn-primary.btn-join Join
-
-    ul
-      each participants
-        li
-          a(href="{{user_path userId}}")
-            {{username userId}}
-          if userIsCurrentUser userId
-            .pull-right
-              .btn.btn-primary.btn-leave Leave
+        ul.list-inline
+          each participants
+            li
+              a(href="{{user_path userId}}")
+                {{username userId}}
+              if userIsCurrentUser userId
+                .pull-right
+                  .btn.btn-primary.btn-leave Leave
 
   br
 

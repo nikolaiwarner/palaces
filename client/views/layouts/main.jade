@@ -1,16 +1,32 @@
 head
+  meta(charset="utf-8")
+  meta(content="IE=edge", http-equiv="X-UA-Compatible")
+  meta(content="width=device-width, initial-scale=1", name="viewport")
   link(href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css", rel="stylesheet")
 
 template(name="layout")
-  nav.navbar.navbar-default(role="navigation")
-    .container
+  nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+    .container-fluid
       .navbar-header
         a.navbar-brand(href="/") Palaces
       .navbar-collapse.collapse
         .nav.navbar-nav.navbar-right
           +loginButtons
-  .container
-    +yield
+  .container-fluid
+    .row
+      .col-sm-3.col-md-2.sidebar
+        ul.nav.nav-sidebar
+          li.active
+            a(href="/dashboard") Dashboard
+        ul.nav.nav-sidebar
+          li
+            a(href="/projects") Projects
+          li
+            a(href="") Blah
+          li
+            a(href="") Blah
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        +yield
 
 template(name="home")
   .page-header

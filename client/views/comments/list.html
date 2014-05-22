@@ -2,9 +2,6 @@
   <ul class="media-list comments">
     <li class="media">
       <div class="media-body">
-        <h4 class="media-heading">
-          Comment
-        </h4>
         {{>comment_form}}
       </div>
     </li>
@@ -12,14 +9,14 @@
     {{#each comments}}
       <li class="media">
         <div class="media-body">
-          <h4 class="media-heading">
+          <h5 class="media-heading">
             <a href="{{user_path userId}}">
               {{username userId}}
             </a>
-            <small>
+            <small class="pull-right">
               {{formatTime createdAt}}
             </small>
-          </h4>
+          </h5>
           <p>
             {{comment}}
           </p>
