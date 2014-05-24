@@ -1,4 +1,5 @@
 template(name="friend_show")
+  | The Palace of
   h1.page-header
     {{avatar email}}
     {{username _id}}
@@ -8,9 +9,14 @@ template(name="friend_show")
       else
         if userHasFriendship
           with userHasFriendship
-            .btn.btn-default.btn-unfriend Unfriend
+            .btn.btn-default.btn-unfriend(title='Unfriend')
+              i.fa.fa-child
+              i.fa.fa-child
+              |  You are friends!
         else
-          .btn.btn-primary.btn-befriend Add as a friend
+          .btn.btn-primary.btn-befriend
+            i.fa.fa-child
+            |  Add as a friend
 
   .row
     .col-md-6

@@ -3,11 +3,11 @@ Template.friend_show.events
     friendship =
       toUserId: Session.get('selectedUserId')
     Friendships.insert friendship, (error, friendship_id) =>
-      console.log 'Friendships.insert', error, friendship_id
+      FlashMessages.sendSuccess("You made a friend!")
   'click .btn-unfriend': (e) ->
     console.log this._id
     Friendships.remove this._id, (error, friendship_id) =>
-      console.log 'Friendships.remove', error, friendship_id
+      FlashMessages.sendSuccess("You lost a friend.")
 
 Template.friend_show.helpers
   friends: ->

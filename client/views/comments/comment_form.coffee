@@ -8,14 +8,14 @@ AutoForm.hooks
 
     after:
       insert: (error, result, template) ->
-        # unless error
-        #   Router.go("/comments/#{result}")
+        unless error
+          FlashMessages.sendSuccess("Posted message.")
       update: (error, result, template) ->
-        # unless error
-        #   Router.go("/comments/#{template.data.doc._id}")
+        unless error
+          FlashMessages.sendSuccess("Updated message.")
       remove: (error, result, template) ->
-        # unless error
-        #   Router.go("/comments/")
+        unless error
+          FlashMessages.sendSuccess("Removed message.")
 
 Template.comment_form.helpers
   method: ->

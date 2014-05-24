@@ -12,6 +12,7 @@
     "filter-collections": {},
     "gravatar": {},
     "meteor-markdown": {},
-    "marked": {}
+    "marked": {},
+    "flash-messages": {}
   }
 }

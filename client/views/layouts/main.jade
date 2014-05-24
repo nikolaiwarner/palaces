@@ -13,6 +13,7 @@ template(name="layout")
         .nav.navbar-nav.navbar-right
           +loginButtons
   .container-fluid
+    {{> flashMessages}}
     .row
       .col-sm-3.col-md-2.sidebar
         ul.nav.nav-sidebar
@@ -27,6 +28,3 @@ template(name="layout")
             a(href="") Blah
       .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
         +yield
-
-template(name="home")
-  .page-header

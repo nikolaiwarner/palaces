@@ -14,7 +14,8 @@
       "filter-collections": {},
       "gravatar": {},
       "meteor-markdown": {},
-      "marked": {}
+      "marked": {},
+      "flash-messages": {}
     },
     "packages": {
       "moment": {
@@ -49,13 +50,13 @@
       },
       "jade": {
         "git": "https://github.com/mquandalle/meteor-jade.git",
-        "tag": "v0.2.2",
-        "commit": "0391abab7d592b17ff74d9b9beaa721051970729"
+        "tag": "v0.2.3",
+        "commit": "38220544108cdc30e2e53f40481dce0b594d6f31"
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.8.1",
-        "commit": "385051a5e4bbea3b2a54965800f5f530987ef432"
+        "tag": "v0.9.0",
+        "commit": "0841eb4ed0f7dd9801d9c234921647609cad44ba"
       },
       "accounts-steam": {
         "git": "https://github.com/Multiply/meteor-accounts-steam.git",
@@ -81,6 +82,11 @@
         "git": "https://github.com/chuangbo/meteor-marked.git",
         "tag": "v0.3.2",
         "commit": "850f63135cdeb05344c420bd586fd8af9cab75df"
+      },
+      "flash-messages": {
+        "git": "https://github.com/camilosw/flash-messages.git",
+        "tag": "v0.2.4",
+        "commit": "8e7d09e7b7bd61ab10aaad01371dcecef2e9f797"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

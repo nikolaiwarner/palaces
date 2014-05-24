@@ -3,10 +3,10 @@ Template.project_show.events
     participation =
       projectId: Session.get('selectedProjectId')
     Participations.insert participation, (error, participation_id) =>
-      console.log 'Participations.insert', error, participation_id
+      FlashMessages.sendSuccess("Joined project.")
   'click .btn-leave': (e) ->
     Participations.remove this._id, (error, participation_id) =>
-      console.log 'Participations.remove', error, participation_id
+      FlashMessages.sendSuccess("Left project.")
 
 Template.project_show.helpers
   participants: ->

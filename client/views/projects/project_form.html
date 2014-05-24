@@ -1,10 +1,12 @@
 <template name="project_form">
   {{#autoForm collection="Projects" id="projectForm" doc=currentProject type=method}}
-    {{> afQuickField name='name'}}
-    {{> afQuickField name='description'}}
+    {{> afQuickField name='name' placeholder="Paint the kitchen"}}
+    {{> afQuickField name='description' placeholder="All the fine details..."}}
 
-    {{> afFieldLabel name='date'}}
-    {{> afFieldInput name='date' type='datetime-local'}}
+    <div class="form-group">
+      {{> afFieldLabel name='date'}}
+      {{> afFieldInput name='date' type='datetime-local'}}
+    </div>
 
     {{#if currentProject}}
       <button type="submit" class="btn btn-primary update">Update</button>
