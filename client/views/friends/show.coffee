@@ -34,3 +34,9 @@ Template.friend_show.helpers
   canEdit: ->
     if user=Users.findOne({_id: Session.get('selectedUserId')})
       Meteor.userId() == user._id
+  owes_tokens: ->
+    Tokens.find
+      userId: Session.get('selectedUserId')
+  owed_tokens: ->
+    Tokens.find
+      toUserId: Session.get('selectedUserId')

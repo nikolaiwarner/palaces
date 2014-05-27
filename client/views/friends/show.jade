@@ -18,6 +18,10 @@ template(name="friend_show")
             i.fa.fa-child
             |  Add as a friend
 
+  .well
+    //- with user
+    {{> token_give}}
+
   .row
     .col-md-6
       if projects
@@ -49,6 +53,27 @@ template(name="friend_show")
             li
               a(href="/friends/#{_id}")
                 {{username _id}}
+
+    .row
+      .col-md-6
+        if owes_tokens
+          h2 Time owed to friends:
+          ul.list-inline
+            each owes_tokens
+              li
+                a(href="/friends/#{toUserId}")
+                  {{username userId}} owes {{username toUserId}}:
+                  {{amount}}
+      .col-md-6
+        if owed_tokens
+          h2 Awaiting reciprocation:
+          ul.list-inline
+            each owed_tokens
+              li
+                a(href="/friends/#{userId}")
+                  {{username userId}} owes {{username toUserId}}:
+                  {{amount}}
+
   br
 
   +comment_list

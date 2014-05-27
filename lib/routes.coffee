@@ -86,6 +86,7 @@ Router.map ->
         commentableType: "Users"
         commentableId: @params._id
       Meteor.subscribe "friendships"
+      Meteor.subscribe "tokens"
       Meteor.subscribe "users"
     data: ->
       Users.findOne @params._id
