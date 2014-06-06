@@ -1,4 +1,4 @@
-@Tokens = new Meteor.Collection2 "tokens",
+@Tokens = new Meteor.Collection "tokens",
   schema:
     userId:
       type: String

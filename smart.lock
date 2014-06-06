@@ -50,13 +50,13 @@
       },
       "jade": {
         "git": "https://github.com/mquandalle/meteor-jade.git",
-        "tag": "v0.2.3",
-        "commit": "38220544108cdc30e2e53f40481dce0b594d6f31"
+        "tag": "v0.2.4",
+        "commit": "a47a4c59daaa57e7fe5f1544d4ea76d95a5c9abf"
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.9.0",
-        "commit": "0841eb4ed0f7dd9801d9c234921647609cad44ba"
+        "tag": "v0.11.0",
+        "commit": "efdffcdf836a45c50c39696ede15399177ccb9fa"
       },
       "accounts-steam": {
         "git": "https://github.com/Multiply/meteor-accounts-steam.git",
@@ -105,8 +105,8 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.3.11",
-        "commit": "7e970671305657678e8508d8107d5e6c5e158559"
+        "tag": "v0.4.0",
+        "commit": "5648f7c53ee98f3ac8fbe82a55e6fd78fc67cfbc"
       },
       "steam": {
         "git": "https://github.com/Multiply/meteor-steam.git",

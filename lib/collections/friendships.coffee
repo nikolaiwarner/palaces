@@ -1,4 +1,4 @@
-@Friendships = new Meteor.Collection2 "friendships",
+@Friendships = new Meteor.Collection "friendships",
   schema:
     userId:
       type: String

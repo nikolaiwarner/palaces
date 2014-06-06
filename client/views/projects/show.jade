@@ -1,44 +1,52 @@
 template(name="project_show")
-  a(href="/friends/#{userId}")
-    {{username userId}}'s Palace
-  h1.page-header
-    =name
-    span.pull-right
-      unless canEdit
-        unless userIsParticipating
-          .btn.btn-primary.btn-join Join
-
-      if canEdit
-        a.btn.btn-default(href="/projects/#{_id}/edit") Settings
-
-  .row
-    .col-md-6
-      if date
-        p
-          {{formatDate date}}
-
-      if description
-        p
-          +markdown
-            {{description}}
-    .col-md-6
-      if participants
-        h4
-          | Who's helping
-
+  .project_show
+    a(href="/friends/#{userId}")
+      {{username userId}}'s Palace
+    h1.page-header
+      =name
+      span.pull-right
         unless canEdit
           unless userIsParticipating
-            .btn.btn-primary.btn-join Join
+            .btn.btn-primary.btn-join
+              i.fa.fa-circle-o
+              |  Join this project
 
-        ul.list-inline
-          each participants
-            li
-              a(href="{{user_path userId}}")
-                {{username userId}}
-              if userIsCurrentUser userId
-                .pull-right
-                  .btn.btn-primary.btn-leave Leave
+        if canEdit
+          unless isComplete
+            a.btn.btn-primary.btn-complete
+              i.fa.fa-circle-o
+              |  Mark complete
+          else
+            a.btn.btn-primary.btn-in-progress
+              i.fa.fa-check-circle
+              |  Complete!
 
-  br
+          a.btn.btn-default(href="/projects/#{_id}/edit") Settings
 
-  +comment_list
+    .details
+      if date
+        i.fa.fa-calendar
+        |  {{formatDate date}}
+
+    .row
+      .col-md-8
+        if description
+          .description
+            +markdown
+              {{description}}
+
+        if participants
+          h4
+            | Who's helping:
+          ul.list-inline
+            each participants
+              li
+                a(href="{{user_path userId}}")
+                  {{username userId}}
+                if userIsCurrentUser userId
+                  .pull-right
+                    .btn.btn-primary.btn-leave Leave
+
+      .col-md-4
+        .comments_container
+          +comment_list

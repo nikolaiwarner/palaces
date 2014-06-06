@@ -1,4 +1,4 @@
-@Projects = new Meteor.Collection2 "projects",
+@Projects = new Meteor.Collection "projects",
   schema:
     userId:
       type: String
@@ -21,6 +21,10 @@
       autoValue: ->
         if @isUpdate
           new Date()
+
+    status:
+      type: String
+      max: 50
 
     name:
       type: String

@@ -1,4 +1,4 @@
-@Comments = new Meteor.Collection2 "comments",
+@Comments = new Meteor.Collection "comments",
   schema:
     userId:
       type: String

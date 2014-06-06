@@ -1,5 +1,7 @@
 template(name="project_index")
-  h1 Your Projects
+  h1.page-header Your Projects
+    span.pull-right
+      a.btn.btn-default(href="/projects/new") Add a project
 
   table.table
     each my_projects
@@ -21,7 +23,3 @@ template(name="project_index")
         td.date
           a(href="/projects/#{_id}")
             {{formatDate date}}
-
-  hr
-  h2 Add a project
-  +project_form

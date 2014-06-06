@@ -1,11 +1,6 @@
 <template name="comment_list">
+  {{>comment_form}}
   <ul class="media-list comments">
-    <li class="media">
-      <div class="media-body">
-        {{>comment_form}}
-      </div>
-    </li>
-
     {{#each comments}}
       <li class="media">
         <div class="media-body">

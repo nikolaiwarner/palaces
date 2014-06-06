@@ -20,11 +20,20 @@ a {
 }
 
 .btn {
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  margin: 2px;
+
   &.btn-primary {
     border-color: #000;
     background-color: #000;
     background-image: none;
   }
+}
+
+input.form-control {
+  border: 1px solid #000;
+  border-radius: 0;
 }
 
 .navbar-default {
@@ -78,14 +87,9 @@ a {
 .main {
   padding: 20px;
 }
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
 .main .page-header {
   margin-top: 0;
+  border-bottom: 0;
 }
 
 .card {
@@ -96,7 +100,28 @@ a {
   padding: 10px;
 }
 
-.comments li {
-  border-top: 1px solid #eee;
-  padding-top: 10px;
+.comments {
+  input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  li {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+}
+
+.project_show {
+  .details {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+  }
+  .description {
+    padding: 10px;
+  }
+  .comments_container {
+    border-left: 1px solid #ddd;
+    padding-left: 10px;
+  }
 }
