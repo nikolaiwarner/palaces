@@ -25,6 +25,7 @@
     status:
       type: String
       max: 50
+      defaultValue: 'in progress'
 
     name:
       type: String

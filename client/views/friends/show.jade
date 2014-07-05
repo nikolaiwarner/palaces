@@ -1,79 +1,82 @@
 template(name="friend_show")
-  | The Palace of
-  h1.page-header
-    {{avatar email}}
-    {{username _id}}
-    span.pull-right
-      if canEdit
-        a.btn.btn-default(href="/projects/#{_id}/edit") Edit
-      else
-        if userHasFriendship
-          with userHasFriendship
-            .btn.btn-default.btn-unfriend(title='Unfriend')
-              i.fa.fa-child
-              i.fa.fa-child
-              |  You are friends!
-        else
-          .btn.btn-primary.btn-befriend
-            i.fa.fa-child
-            |  Add as a friend
+  .friend_show
+    | The Palace of
+    h1.page-header
+      {{avatar email}}
+      {{username _id}}
 
-  .well
-    //- with user
-    {{> token_give}}
+    hr
 
-  .row
-    .col-md-6
-      if projects
-        h2 Projects
-        ul
-          each projects
-            li
-              a(href="/projects/#{_id}")
-                =name
+    if projects
+      h2 Projects
+      ul.list-unstyled
+        each projects
+          li
+            a(href="/projects/#{_id}")
+              =name
+            if date
+              |  on {{formatDate date}}
+
+    if project_participations
+      h2 Helping
+      ul.list-unstyled
+        each project_participations
+          li
+            a(href="/projects/#{_id}")
+              {{name}}
+              |  at {{username userId}}'s Palace
               if date
                 |  on {{formatDate date}}
 
-      if project_participations
-        h2 Helping
-        ul
-          each project_participations
-            li
-              a(href="/projects/#{_id}")
-                {{name}}
-                |  at {{username userId}}'s Palace
-                if date
-                  |  on {{formatDate date}}
 
-    .col-md-6
-      if friends
-        h2 Friends
-        ul.list-inline
-          each friends
-            li
-              a(href="/friends/#{_id}")
-                {{username _id}}
+    if friends
+      h2 Friends
+      ul.list-inline
+        each friends
+          li
+            a(href="/friends/#{_id}")
+              {{username _id}}
 
+
+    if owes_tokens
+      h2 Time owed to friends:
+      ul.list-inline
+        each owes_tokens
+          li
+            a(href="/friends/#{toUserId}")
+              {{username userId}} owes {{username toUserId}}:
+              {{amount}}
+
+    if owed_tokens
+      h2 Awaiting reciprocation:
+      ul.list-inline
+        each owed_tokens
+          li
+            a(href="/friends/#{userId}")
+              {{username userId}} owes {{username toUserId}}:
+              {{amount}}
+
+    hr
     .row
       .col-md-6
-        if owes_tokens
-          h2 Time owed to friends:
-          ul.list-inline
-            each owes_tokens
-              li
-                a(href="/friends/#{toUserId}")
-                  {{username userId}} owes {{username toUserId}}:
-                  {{amount}}
+        if canEdit
+          a.btn.btn-default(href="/projects/#{_id}/edit") Edit
+        else
+          if userHasFriendship
+            with userHasFriendship
+              .btn.btn-default.btn-unfriend(title='Unfriend')
+                i.fa.fa-child
+                i.fa.fa-child
+                |  You are friends!
+          else
+            .btn.btn-primary.btn-befriend
+              i.fa.fa-child
+              |  Add as a friend
       .col-md-6
-        if owed_tokens
-          h2 Awaiting reciprocation:
-          ul.list-inline
-            each owed_tokens
-              li
-                a(href="/friends/#{userId}")
-                  {{username userId}} owes {{username toUserId}}:
-                  {{amount}}
+        {{> token_give}}
 
-  br
-
-  +comment_list
+    hr
+    .row
+      .col-md-6.col-md-offset-3
+        .comments_container
+          +comment_list

@@ -12,14 +12,3 @@ template(name="page_dashboard")
         td.date
           a(href="/projects/#{_id}")
             {{formatDate date}}
-
-  hr
-  table.table
-    each all_projects
-      tr
-        td.name
-          a(href="/projects/#{_id}")
-            =name
-        td.date
-          a(href="/projects/#{_id}")
-            {{formatDate date}}

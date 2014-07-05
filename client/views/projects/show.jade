@@ -35,10 +35,11 @@ template(name="project_show")
             +markdown
               {{description}}
 
-        if participants
-          h4
-            | Who's helping:
-          ul.list-inline
+        hr
+        h4
+          | Who's helping:
+        ul.list-inline
+          if participants
             each participants
               li
                 a(href="{{user_path userId}}")
@@ -46,6 +47,8 @@ template(name="project_show")
                 if userIsCurrentUser userId
                   .pull-right
                     .btn.btn-primary.btn-leave Leave
+          else
+            li Nobody.
 
       .col-md-4
         .comments_container

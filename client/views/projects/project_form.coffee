@@ -2,15 +2,21 @@ AutoForm.hooks
   projectForm:
     after:
       insert: (error, result, template) ->
-        unless error
+        if error
+          FlashMessages.sendWarning(error.message)
+        else
           Router.go("/projects/#{result}")
           FlashMessages.sendSuccess("Created project.")
       update: (error, result, template) ->
-        unless error
+        if error
+          FlashMessages.sendWarning(error.message)
+        else
           Router.go("/projects/#{template.data.doc._id}")
           FlashMessages.sendSuccess("Saved.")
       remove: (error, result, template) ->
-        unless error
+        if error
+          FlashMessages.sendWarning(error.message)
+        else
           Router.go("/projects/")
           FlashMessages.sendSuccess("Removed project.")
 

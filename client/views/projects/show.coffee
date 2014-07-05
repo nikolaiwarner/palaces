@@ -21,6 +21,12 @@ Template.project_show.helpers
   participants: ->
     Participations.find
       projectId: Session.get('selectedProjectId')
+  # has_participants: ->
+  #   @participants = Participations.find
+  #     projectId: Session.get('selectedProjectId')
+  #   console.log @participants, @participants.length, Session.get('selectedProjectId')
+  #   @participants.length > 0
+  #   true
   canEdit: ->
     if project=Projects.findOne({_id: Session.get('selectedProjectId')})
       Meteor.userId() == project.userId

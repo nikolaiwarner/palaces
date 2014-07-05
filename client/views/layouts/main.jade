@@ -2,25 +2,21 @@ head
   meta(charset="utf-8")
   meta(content="IE=edge", http-equiv="X-UA-Compatible")
   meta(content="width=device-width, initial-scale=1", name="viewport")
+  link(href="http://fonts.googleapis.com/css?family=Vollkorn", rel="stylesheet", type="text/css")
   link(href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css", rel="stylesheet")
 
 template(name="layout")
   nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
-    .container-fluid
-      .navbar-header
-        a.navbar-brand(href="/") Palaces
-      .navbar-collapse.collapse
-        .nav.navbar-nav.navbar-right
-          +loginButtons
-  .container-fluid
+    .container
+      .row
+        .col-sm-4
+
+        .col-sm-4.text-center
+          a.navbar-brand(href="/") Palaces
+        .col-sm-4
+          .navbar-collapse.collapse
+            .nav.navbar-nav.navbar-right
+              +loginButtons
+  .container
     {{> flashMessages}}
-    .row
-      .col-sm-3.col-md-2.sidebar
-        ul.nav.nav-sidebar
-          li.active
-            a(href="/dashboard") Dashboard
-        ul.nav.nav-sidebar
-          li
-            a(href="/projects") Projects
-      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-        +yield
+    +yield

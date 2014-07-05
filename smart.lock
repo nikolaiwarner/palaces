@@ -10,7 +10,6 @@
       "accounts-ui-bootstrap-3-blaze": {},
       "jade": {},
       "autoform": {},
-      "accounts-steam": {},
       "filter-collections": {},
       "gravatar": {},
       "meteor-markdown": {},
@@ -30,13 +29,13 @@
       },
       "nprogress": {
         "git": "https://github.com/zhouzhuojie/meteor-nprogress.git",
-        "tag": "v0.0.4",
-        "commit": "8333206b751a24fac1fbd1b03fa37621bcefe50c"
+        "tag": "v0.0.5",
+        "commit": "bb88a057166e0f1386ab8bc0a1e080b48aa59159"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v3.1.1-1",
-        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
+        "tag": "v3.2.0-1",
+        "commit": "17a63902fc6cf1096c5289d963c66cf28b474727"
       },
       "accounts-entry": {
         "git": "https://github.com/Differential/accounts-entry.git",
@@ -55,13 +54,8 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.11.0",
-        "commit": "efdffcdf836a45c50c39696ede15399177ccb9fa"
-      },
-      "accounts-steam": {
-        "git": "https://github.com/Multiply/meteor-accounts-steam.git",
-        "tag": "v0.0.1",
-        "commit": "29e8b70d047871fc201c475c763e60d87b16ddcc"
+        "tag": "v0.13.5",
+        "commit": "27dd5b912eeba687b228a6a7c2c14eef63b12cca"
       },
       "filter-collections": {
         "git": "https://github.com/julianmontagna/filter-collections.git",
@@ -105,13 +99,8 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.4.0",
-        "commit": "5648f7c53ee98f3ac8fbe82a55e6fd78fc67cfbc"
-      },
-      "steam": {
-        "git": "https://github.com/Multiply/meteor-steam.git",
-        "tag": "v0.0.1",
-        "commit": "54e1d2a4a7870d1d654c0bae87998421a93ad1c4"
+        "tag": "v0.4.2",
+        "commit": "4ff4b707bec8be434919730bf101325adb215444"
       },
       "crypto-md5": {
         "git": "https://github.com/oortcloud/meteor-crypto-md5.git",

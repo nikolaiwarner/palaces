@@ -1,21 +1,26 @@
 <template name="project_form">
-  {{#autoForm collection="Projects" id="projectForm" doc=currentProject type=method}}
-    {{> afQuickField name='name' placeholder="Paint the kitchen"}}
-    <div class="form-group">
-      {{> afFieldLabel name='date'}}
-      {{> afFieldInput name='date' type='datetime-local'}}
+  <div class="row">
+    <div class="col-md-6">
+      {{#autoForm collection="Projects" id="projectForm" doc=currentProject type=method}}
+        {{> afQuickField name='name' placeholder="Paint the kitchen"}}
+        <div class="form-group">
+          {{> afFieldLabel name='date'}}
+          {{> afFieldInput name='date' type='datetime-local'}}
+        </div>
+        {{> afQuickField name='description' placeholder="Tools/skills/equiptment/refreshments/etc..." rows=10}}
+
+        {{#if currentProject}}
+          <button type="submit" class="btn btn-primary update">Update</button>
+        {{else}}
+          <button type="submit" class="btn btn-primary insert">Create</button>
+        {{/if}}
+      {{/autoForm}}
     </div>
-    {{> afQuickField name='description' placeholder="Tools/skills/equiptment/refreshments/etc..." rows=10}}
 
-    {{#if currentProject}}
-      <button type="submit" class="btn btn-primary update">Update</button>
-    {{else}}
-      <button type="submit" class="btn btn-primary insert">Create</button>
-    {{/if}}
-  {{/autoForm}}
-
-  {{#if currentProject}}
-    <hr>
-    {{> afDeleteButton collection="Projects" doc=currentProject type="remove"}}
-  {{/if}}
+    <div class="col-md-6 text-right">
+      {{#if currentProject}}
+        {{> afDeleteButton collection="Projects" doc=currentProject type="remove"}}
+      {{/if}}
+    </div>
+  </div>
 </template>

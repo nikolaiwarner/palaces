@@ -12,8 +12,6 @@ nprogress
 bootstrap-3
 accounts-base
 accounts-google
-accounts-facebook
-accounts-github
 showdown
 jquery-layout
 accounts-entry
@@ -21,7 +19,6 @@ accounts-ui-bootstrap-3-blaze
 jade
 autoform
 collection2
-accounts-steam
 gravatar
 marked
 flash-messages
