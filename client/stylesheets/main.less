@@ -1,10 +1,10 @@
 @color0: #f8f5ef;
 @color0_lighter: #fff;
 @color1: #172bae;
-@color1_darker: darken(#172bae, 10%);
+@color1_lighter: #1938FF;
 
 body {
-  padding-top: 70px;
+  padding-top: 100px;
   background-color: @color0;
   color: @color1;
   font-family: 'Vollkorn', serif;
@@ -12,11 +12,23 @@ body {
 }
 
 a {
-  color: @color1_darker;
+  color: @color1_lighter;
+  // border-bottom: 1px dashed transparent;
+  // padding-bottom: 0;
+  // margin-bottom: 10px;
+  //
+  // &:hover {
+  //   border-bottom-color: @color1_lighter;
+  //   text-decoration: none;
+  // }
 }
 
 hr {
   border-color: @color1;
+}
+
+section {
+  margin-top: 60px;
 }
 
 .alert {
@@ -48,10 +60,31 @@ hr {
   }
 }
 
+a.back-button {
+  position: absolute;
+  margin-left: -35px;
+  font-weight: 400;
+  margin-top: -3px;
+  font-family: arial;
+  text-decoration: none;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+
+  &:hover {
+    margin-left: -38px;
+  }
+}
+
+.form-group {
+  margin-top: 40px;
+}
+
 input.form-control, textarea.form-control {
-  border: 1px solid @color1;
-  background-color: @color0_lighter;
-  border-radius: 2;
+  border: 0;
+  border-bottom: 1px dashed @color1;
+  background-color: @color0;
+  border-radius: 0;
+  padding-left: 0;
 }
 
 .navbar {
@@ -83,6 +116,11 @@ input.form-control, textarea.form-control {
   margin-top: 0;
   margin-bottom: 0;
   border-bottom: 0;
+  text-align: left;
+
+  .title {
+    text-align: center;
+  }
 }
 
 .card {
@@ -119,4 +157,12 @@ input.form-control, textarea.form-control {
 
 .friend_show {
   text-align: center;
+}
+
+.project_show {
+  text-align: center;
+
+  .description {
+    text-align: left;
+  }
 }
