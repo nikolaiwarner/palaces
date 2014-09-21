@@ -1,26 +1,23 @@
 @color0: #f8f5ef;
-@color0_lighter: #fff;
+@color0_lighter: #f8f5ef; //#fff;
 @color1: #172bae;
-@color1_lighter: #1938FF;
+@color1_lighter: #172bae; //#1938FF;
 
 body {
   padding-top: 100px;
   background-color: @color0;
   color: @color1;
   font-family: 'Vollkorn', serif;
-  font-size: 1.8em;
+  font-size: 1.9em;
+  font-weight: 200;
 }
 
 a {
-  color: @color1_lighter;
-  // border-bottom: 1px dashed transparent;
-  // padding-bottom: 0;
-  // margin-bottom: 10px;
-  //
-  // &:hover {
-  //   border-bottom-color: @color1_lighter;
-  //   text-decoration: none;
-  // }
+  color: @color1;
+
+  &:hover {
+    color: @color1_lighter;
+  }
 }
 
 hr {
@@ -29,6 +26,12 @@ hr {
 
 section {
   margin-top: 60px;
+
+  h2 {
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 5px;
+  }
 }
 
 .alert {
@@ -94,6 +97,14 @@ input.form-control, textarea.form-control {
     background-color: @color0;
     border-bottom-color: @color1;
 
+    .navbar-nav {
+      li {
+        a {
+          color: @color1;
+        }
+      }
+    }
+
     .container {
       .navbar-brand {
         color: @color1;
@@ -119,7 +130,6 @@ input.form-control, textarea.form-control {
   text-align: left;
 
   .title {
-    text-align: center;
   }
 }
 
@@ -156,12 +166,9 @@ input.form-control, textarea.form-control {
 }
 
 .friend_show {
-  text-align: center;
 }
 
 .project_show {
-  text-align: center;
-
   .description {
     text-align: left;
   }
