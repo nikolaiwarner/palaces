@@ -15,10 +15,10 @@ jquery-layout
 joshowens:accounts-entry@0.7.3
 mrt:accounts-ui-bootstrap-3-blaze@0.3.7
 aldeed:autoform@0.13.5
-collection2
 tmeasday:gravatar@0.0.4
 chuangbo:marked@0.3.2
 mrt:flash-messages@0.2.4
 waitingkuo:jade
 iron:router
 mizzao:bootstrap-3
+aldeed:collection2
