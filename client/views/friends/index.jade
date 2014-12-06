@@ -6,10 +6,10 @@ template(name="friend_index")
       tr
         td.name
           a(href="/friends/#{_id}")
-            =name
+            | =name
         td.date
           a(href="/friends/#{_id}")
-            {{formatDate date}}
+            | {{formatDate date}}
 
   hr
   table.table
@@ -17,10 +17,10 @@ template(name="friend_index")
       tr
         td.name
           a(href="/friends/#{_id}")
-            =name
+            | =name
         td.date
           a(href="/friends/#{_id}")
-            {{formatDate date}}
+              | {{formatDate date}}
 
   hr
   h2 Add a friend

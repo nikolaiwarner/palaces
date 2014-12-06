@@ -1,10 +1,9 @@
 template(name="friend_show")
   .friend_show
-    {{avatar email}}
+    | {{avatar email}}
     | The Palace of
     h1.page-header
-      .title
-        {{username _id}}
+      .title {{username _id}}
 
     hr
 
@@ -15,7 +14,7 @@ template(name="friend_show")
           each projects
             li
               a(href="/projects/#{_id}")
-                =name
+                | =name
               if date
                 |  on {{formatDate date}}
 
@@ -26,7 +25,7 @@ template(name="friend_show")
           each project_participations
             li
               a(href="/projects/#{_id}")
-                {{name}}
+                | {{name}}
                 |  at {{username userId}}'s Palace
                 if date
                   |  on {{formatDate date}}
@@ -39,7 +38,7 @@ template(name="friend_show")
           each friends
             li
               a(href="/friends/#{_id}")
-                {{username _id}}
+                | {{username _id}}
 
 
     if owes_tokens
@@ -49,8 +48,8 @@ template(name="friend_show")
           each owes_tokens
             li
               a(href="/friends/#{toUserId}")
-                {{username userId}} owes {{username toUserId}}:
-                {{amount}}
+                | {{username userId}} owes {{username toUserId}}:
+                | {{amount}}
 
     if owed_tokens
       section.owed
@@ -59,8 +58,8 @@ template(name="friend_show")
           each owed_tokens
             li
               a(href="/friends/#{userId}")
-                {{username userId}} owes {{username toUserId}}:
-                {{amount}}
+                | {{username userId}} owes {{username toUserId}}:
+                | {{amount}}
 
     section.give
       hr
@@ -80,7 +79,7 @@ template(name="friend_show")
                 i.fa.fa-child
                 |  Add as a friend
         .col-md-6
-          {{> token_give}}
+          | {{> token_give}}
 
     section.friend_comments
       hr

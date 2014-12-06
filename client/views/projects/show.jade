@@ -1,11 +1,11 @@
 template(name="project_show")
   .project_show
     a(href="/friends/#{userId}")
-      {{username userId}}'s Palace
+      | {{username userId}}'s Palace
     h1.page-header
       a.back-button(href="/friends/#{userId}") &#10094;
       .title
-        =name
+        | =name
 
     section.actions
       unless canEdit
@@ -35,7 +35,7 @@ template(name="project_show")
     if description
       section.description
         +markdown
-          {{description}}
+          | {{description}}
 
     section.participants
       hr
@@ -46,7 +46,7 @@ template(name="project_show")
           each participants
             li
               a(href="{{user_path userId}}")
-                {{username userId}}
+                | {{username userId}}
               if userIsCurrentUser userId
                 |  (
                 span.btn.btn-leave Leave Project

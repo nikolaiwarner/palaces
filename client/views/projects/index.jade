@@ -8,10 +8,10 @@ template(name="project_index")
       tr
         td.name
           a(href="/projects/#{_id}")
-            =name
+            | =name
         td.date
           a(href="/projects/#{_id}")
-            {{formatDate date}}
+            | {{formatDate date}}
 
   hr
   table.table
@@ -19,7 +19,7 @@ template(name="project_index")
       tr
         td.name
           a(href="/projects/#{_id}")
-            =name
+            | =name
         td.date
           a(href="/projects/#{_id}")
-            {{formatDate date}}
+            | {{formatDate date}}
