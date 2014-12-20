@@ -1,36 +1,38 @@
-@Participations = new Meteor.Collection "participations",
-  schema:
-    userId:
-      type: String
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          Meteor.userId()
+@Participations = new Meteor.Collection "participations"
 
-    createdAt:
-      type: Date
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          new Date()
+participations_schema = new SimpleSchema
+  userId:
+    type: String
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        Meteor.userId()
 
-    updatedAt:
-      type: Date
-      denyInsert: true
-      optional: true
-      autoValue: ->
-        if @isUpdate
-          new Date()
+  createdAt:
+    type: Date
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        new Date()
 
-    projectId:
-      type: String
-      max: 50
+  updatedAt:
+    type: Date
+    denyInsert: true
+    optional: true
+    autoValue: ->
+      if @isUpdate
+        new Date()
 
-    notes:
-      type: String
-      max: 1000
-      optional: true
+  projectId:
+    type: String
+    max: 50
 
+  notes:
+    type: String
+    max: 1000
+    optional: true
+
+@Participations.attachSchema(participations_schema, {transform: true})
 
 @Participations.allow
   insert: (userId, doc) ->

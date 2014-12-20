@@ -1,44 +1,46 @@
-@Tokens = new Meteor.Collection "tokens",
-  schema:
-    userId:
-      type: String
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          Meteor.userId()
+@Tokens = new Meteor.Collection "tokens"
 
-    createdAt:
-      type: Date
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          new Date()
+tokens_schema = new SimpleSchema
+  userId:
+    type: String
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        Meteor.userId()
 
-    updatedAt:
-      type: Date
-      denyInsert: true
-      optional: true
-      autoValue: ->
-        if @isUpdate
-          new Date()
+  createdAt:
+    type: Date
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        new Date()
 
-    toUserId:
-      type: String
-      max: 50
+  updatedAt:
+    type: Date
+    denyInsert: true
+    optional: true
+    autoValue: ->
+      if @isUpdate
+        new Date()
 
-    amount:
-      type: Number
+  toUserId:
+    type: String
+    max: 50
 
-    projectId:
-      type: String
-      max: 50
-      optional: true
+  amount:
+    type: Number
 
-    note:
-      type: String
-      max: 1000
-      optional: true
+  projectId:
+    type: String
+    max: 50
+    optional: true
 
+  note:
+    type: String
+    max: 1000
+    optional: true
+
+@Tokens.attachSchema(tokens_schema, {transform: true})
 
 @Tokens.allow
   insert: (userId, doc) ->

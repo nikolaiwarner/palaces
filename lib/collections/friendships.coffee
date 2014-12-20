@@ -1,22 +1,25 @@
-@Friendships = new Meteor.Collection "friendships",
-  schema:
-    userId:
-      type: String
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          Meteor.userId()
+@Friendships = new Meteor.Collection "friendships"
 
-    createdAt:
-      type: Date
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          new Date()
+friendships_schema = new SimpleSchema
+  userId:
+    type: String
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        Meteor.userId()
 
-    toUserId:
-      type: String
-      denyUpdate: true
+  createdAt:
+    type: Date
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        new Date()
+
+  toUserId:
+    type: String
+    denyUpdate: true
+
+@Friendships.attachSchema(friendships_schema, {transform: true})
 
 @Friendships.allow
   insert: (userId, doc) ->

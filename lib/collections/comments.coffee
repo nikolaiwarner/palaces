@@ -1,43 +1,45 @@
-@Comments = new Meteor.Collection "comments",
-  schema:
-    userId:
-      type: String
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          Meteor.userId()
+@Comments = new Meteor.Collection "comments"
 
-    createdAt:
-      type: Date
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          new Date()
+comments_schema = new SimpleSchema
+  userId:
+    type: String
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        Meteor.userId()
 
-    updatedAt:
-      type: Date
-      denyInsert: true
-      optional: true
-      autoValue: ->
-        if @isUpdate
-          new Date()
+  createdAt:
+    type: Date
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        new Date()
 
-    commentableType:
-      type: String
-      max: 50
+  updatedAt:
+    type: Date
+    denyInsert: true
+    optional: true
+    autoValue: ->
+      if @isUpdate
+        new Date()
 
-    commentableId:
-      type: String
-      max: 50
+  commentableType:
+    type: String
+    max: 50
 
-    comment:
-      type: String
-      max: 255
+  commentableId:
+    type: String
+    max: 50
 
-    comment:
-      type: String
-      max: 1000
+  comment:
+    type: String
+    max: 255
 
+  comment:
+    type: String
+    max: 1000
+
+@Comments.attachSchema(comments_schema, {transform: true})
 
 @Comments.allow
   insert: (userId, doc) ->

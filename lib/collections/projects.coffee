@@ -1,45 +1,48 @@
-@Projects = new Meteor.Collection "projects",
-  schema:
-    userId:
-      type: String
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          Meteor.userId()
+@Projects = new Meteor.Collection "projects"
 
-    createdAt:
-      type: Date
-      denyUpdate: true
-      autoValue: ->
-        if @isInsert
-          new Date()
+projects_schema = new SimpleSchema
+  userId:
+    type: String
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        Meteor.userId()
 
-    updatedAt:
-      type: Date
-      denyInsert: true
-      optional: true
-      autoValue: ->
-        if @isUpdate
-          new Date()
+  createdAt:
+    type: Date
+    denyUpdate: true
+    autoValue: ->
+      if @isInsert
+        new Date()
 
-    status:
-      type: String
-      max: 50
-      defaultValue: 'in progress'
+  updatedAt:
+    type: Date
+    denyInsert: true
+    optional: true
+    autoValue: ->
+      if @isUpdate
+        new Date()
 
-    name:
-      type: String
-      max: 50
+  status:
+    type: String
+    max: 50
+    defaultValue: 'in progress'
 
-    date:
-      type: Date
-      optional: true
+  name:
+    type: String
+    max: 50
 
-    description:
-      type: String
-      max: 1000
-      optional: true
+  date:
+    type: Date
+    optional: true
 
+  description:
+    type: String
+    max: 1000
+    optional: true
+
+
+@Projects.attachSchema(projects_schema, {transform: true})
 
 @Projects.allow
   insert: (userId, doc) ->

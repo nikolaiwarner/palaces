@@ -1,11 +1,11 @@
 template(name="project_show")
   .project_show
-    a(href="/friends/#{userId}")
-      | {{username userId}}'s Palace
+    a(href="/friends/#{project.userId}")
+      | {{username project.userId}}'s Palace
     h1.page-header
-      a.back-button(href="/friends/#{userId}") &#10094;
+      a.back-button(href="/friends/#{project.userId}") &#10094;
       .title
-        | =name
+        | {{project.name}}
 
     section.actions
       unless canEdit
@@ -29,13 +29,13 @@ template(name="project_show")
     if date
       section.date
         i.fa.fa-calendar
-        |  {{formatDate date}}
+        |  {{formatDate project.date}}
 
 
     if description
       section.description
         +markdown
-          | {{description}}
+          | {{project.description}}
 
     section.participants
       hr
