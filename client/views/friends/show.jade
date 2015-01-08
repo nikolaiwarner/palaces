@@ -3,20 +3,21 @@ template(name="friend_show")
     | {{avatar email}}
     | The Palace of
     h1.page-header
-      .title {{username _id}}
+      .title {{username user._id}}
 
     hr
 
     if projects
       section.projects
         h2 Projects
-        ul.list-unstyled
+        .row
           each projects
-            li
-              a(href="/projects/#{_id}")
-                | =name
+            .col-sm-2
               if date
-                |  on {{formatDate date}}
+                a(href="/projects/#{_id}") {{formatDate date}}
+            .col-sm-10
+              a(href="/projects/#{_id}") {{name}}
+              
 
     if project_participations
       section.helping
@@ -30,17 +31,6 @@ template(name="friend_show")
                 if date
                   |  on {{formatDate date}}
 
-
-    if friends
-      section.friends
-        h2 Friends
-        ul.list-inline
-          each friends
-            li
-              a(href="/friends/#{_id}")
-                | {{username _id}}
-
-
     if owes_tokens
       section.owes
         h2 Time owed to friends
@@ -48,8 +38,8 @@ template(name="friend_show")
           each owes_tokens
             li
               a(href="/friends/#{toUserId}")
-                | {{username userId}} owes {{username toUserId}}:
-                | {{amount}}
+                | {{username userId}} owes {{username toUserId}}
+                | {{amount}} hours
 
     if owed_tokens
       section.owed
@@ -61,6 +51,15 @@ template(name="friend_show")
                 | {{username userId}} owes {{username toUserId}}:
                 | {{amount}}
 
+    if friends
+      section.friends
+        h2 Friends
+        ul.list-inline
+          each friends
+            li
+              a(href="/friends/#{_id}")
+                | {{username _id}}
+                
     section.give
       hr
       .row

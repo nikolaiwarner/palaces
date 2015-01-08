@@ -1,7 +1,7 @@
 Template.friend_show.events
   'click .btn-befriend': (e) ->
     friendship =
-      toUserId: Session.get('selectedUserId')
+      toUserId: @user._id
     Friendships.insert friendship, (error, friendship_id) =>
       FlashMessages.sendSuccess("You made a friend!")
   'click .btn-unfriend': (e) ->
@@ -12,17 +12,17 @@ Template.friend_show.events
 Template.friend_show.helpers
   friends: ->
     friendships = Friendships.find
-      userId: Session.get('selectedUserId')
+      userId: @user._id
     friends = []
     friendships.forEach (friendship) ->
       friends.push Users.findOne({_id: friendship.toUserId})
     friends
   projects: ->
     Projects.find
-      userId: Session.get('selectedUserId')
+      userId: @user._id
   project_participations: ->
     participations = Participations.find
-      userId: Session.get('selectedUserId')
+      userId: @user._id
     projects = []
     participations.forEach (participation) ->
       projects.push Projects.findOne({_id: participation.projectId})
@@ -30,13 +30,13 @@ Template.friend_show.helpers
   userHasFriendship: ->
     friendship = Friendships.findOne
       userId: Meteor.userId()
-      toUserId: Session.get('selectedUserId')
+      toUserId: @user._id
   canEdit: ->
-    if user=Users.findOne({_id: Session.get('selectedUserId')})
-      Meteor.userId() == user._id
+    if user=Users.findOne({_id: @user._id})
+      Meteor.userId() == @user._id
   owes_tokens: ->
     Tokens.find
-      userId: Session.get('selectedUserId')
+      userId: @user._id
   owed_tokens: ->
     Tokens.find
-      toUserId: Session.get('selectedUserId')
+      toUserId: @user._id
