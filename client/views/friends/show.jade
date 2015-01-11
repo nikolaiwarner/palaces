@@ -1,4 +1,4 @@
-template(name="friend_show")
+template(name="palace_show")
   .friend_show
     | {{avatar email}}
     | The Palace of
@@ -9,14 +9,14 @@ template(name="friend_show")
 
     if projects
       section.projects
-        h2 Projects
-        .row
-          each projects
-            .col-sm-2
+        h2 Projects        
+        each projects  
+          .row      
+            .col-sm-6
+              a(href="/projects/#{_id}") {{name}}
+            .col-sm-6
               if date
                 a(href="/projects/#{_id}") {{formatDate date}}
-            .col-sm-10
-              a(href="/projects/#{_id}") {{name}}
               
 
     if project_participations
@@ -37,7 +37,7 @@ template(name="friend_show")
         ul.list-inline
           each owes_tokens
             li
-              a(href="/friends/#{toUserId}")
+              a(href="/palace/#{toUserId}")
                 | {{username userId}} owes {{username toUserId}}
                 | {{amount}} hours
 
@@ -47,7 +47,7 @@ template(name="friend_show")
         ul.list-inline
           each owed_tokens
             li
-              a(href="/friends/#{userId}")
+              a(href="/palace/#{userId}")
                 | {{username userId}} owes {{username toUserId}}:
                 | {{amount}}
 
@@ -57,28 +57,25 @@ template(name="friend_show")
         ul.list-inline
           each friends
             li
-              a(href="/friends/#{_id}")
+              a(href="/palace/#{_id}")
                 | {{username _id}}
                 
     section.give
       hr
       .row
-        .col-md-6
-          if canEdit
-            a.btn.btn-default(href="/projects/#{_id}/edit") Edit
-          else
-            if userHasFriendship
-              with userHasFriendship
-                .btn.btn-default.btn-unfriend(title='Unfriend')
-                  i.fa.fa-child
-                  i.fa.fa-child
-                  |  You are friends!
-            else
-              .btn.btn-primary.btn-befriend
+        .col-md-6          
+          if userHasFriendship
+            with userHasFriendship
+              .btn.btn-default.btn-unfriend(title='Unfriend')
                 i.fa.fa-child
-                |  Add as a friend
+                i.fa.fa-child
+                |  You are friends!
+          else
+            .btn.btn-primary.btn-befriend
+              i.fa.fa-child
+              |  Add as a friend
         .col-md-6
-          | {{> token_give}}
+          //- | {{> token_give}}
 
     section.friend_comments
       hr

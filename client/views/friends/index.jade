@@ -5,10 +5,10 @@ template(name="friend_index")
     each my_friends
       tr
         td.name
-          a(href="/friends/#{_id}")
+          a(href="/palace/#{_id}")
             | =name
         td.date
-          a(href="/friends/#{_id}")
+          a(href="/palace/#{_id}")
             | {{formatDate date}}
 
   hr
@@ -16,10 +16,10 @@ template(name="friend_index")
     each all_friends
       tr
         td.name
-          a(href="/friends/#{_id}")
+          a(href="/palace/#{_id}")
             | =name
         td.date
-          a(href="/friends/#{_id}")
+          a(href="/palace/#{_id}")
               | {{formatDate date}}
 
   hr

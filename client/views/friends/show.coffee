@@ -1,4 +1,4 @@
-Template.friend_show.events
+Template.palace_show.events
   'click .btn-befriend': (e) ->
     friendship =
       toUserId: @user._id
@@ -9,7 +9,7 @@ Template.friend_show.events
     Friendships.remove this._id, (error, friendship_id) =>
       FlashMessages.sendSuccess("You lost a friend.")
 
-Template.friend_show.helpers
+Template.palace_show.helpers
   friends: ->
     friendships = Friendships.find
       userId: @user._id

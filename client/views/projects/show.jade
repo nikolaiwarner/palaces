@@ -1,9 +1,9 @@
 template(name="project_show")
   .project_show
-    a(href="/friends/#{project.userId}")
+    a(href="/palace/#{project.userId}")
       | {{username project.userId}}'s Palace
     h1.page-header
-      a.back-button(href="/friends/#{project.userId}") &#10094;
+      a.back-button(href="/palace/#{project.userId}") &#10094;
       .title
         | {{project.name}}
 
@@ -40,9 +40,9 @@ template(name="project_show")
     section.participants
       hr
       h4
-        | Who's helping:
+        | HELPERS
       ul.list-inline
-        if participants
+        if has_participants
           each participants
             li
               a(href="{{user_path userId}}")

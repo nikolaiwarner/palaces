@@ -18,12 +18,8 @@ Template.project_show.events
       FlashMessages.sendSuccess("Saved.")
 
 Template.project_show.helpers
-  # has_participants: ->
-  #   @participants = Participations.find
-  #     projectId: Session.get('selectedProjectId')
-  #   console.log @participants, @participants.length, Session.get('selectedProjectId')
-  #   @participants.length > 0
-  #   true
+  has_participants: ->
+    @participants.length > 0
   canEdit: ->
     Meteor.userId() == @project.userId
   isComplete: ->

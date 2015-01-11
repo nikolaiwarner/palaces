@@ -6,7 +6,7 @@ Router.route '/',
   template: 'page_landing'
   onBeforeAction: ->
     if Meteor.user()
-      Router.go('/dashboard')
+      Router.go("/palace/#{Meteor.userId()}")
     else
       this.next()
 
@@ -18,8 +18,6 @@ Router.route '/dashboard',
       Router.go('/')
     else
       this.next()
-  waitOn: ->
-    Meteor.subscribe 'projects'
 
 Router.route '/projects/new',
   name: 'project.new'
@@ -30,7 +28,7 @@ Router.route '/projects/new',
     else
       this.next()
   waitOn: ->
-    Meteor.subscribe 'projects'
+    Meteor.subscribe 'projects_by_user', Meteor.userId()
 
 Router.route '/projects/:_id',
   name: 'project.show'
@@ -42,15 +40,16 @@ Router.route '/projects/:_id',
       console.log @params
       this.next()
   waitOn: ->
-    Meteor.subscribe 'projects'
-    Meteor.subscribe 'participations'
+    project_id = @params._id
+    Meteor.subscribe 'projects_by_user', Meteor.userId()
+    Meteor.subscribe 'participations_by_project', project_id
     Meteor.subscribe 'users'
-    Meteor.subscribe 'comments', 'Projects', @params._id
+    # Meteor.subscribe 'comments', 'Projects', @params._id
   data: ->
-    id = @params._id
-    id: id
-    project: Projects.findOne(id)
-    participants: Participations.find({ projectId: id })
+    project_id = @params._id
+    id: project_id
+    project: Projects.findOne(project_id)
+    participants: Participations.find({ projectId: project_id })
 
 Router.route '/projects/:_id/edit',
   name: 'project.edit'
@@ -61,13 +60,14 @@ Router.route '/projects/:_id/edit',
     else
       this.next()
   waitOn: ->
-    Meteor.subscribe 'projects', Meteor.userId()
+    Meteor.subscribe 'projects_by_user', Meteor.userId()
   data: ->
-    project: Projects.findOne @params._id
+    project_id = @params._id
+    project: Projects.findOne(project_id)
 
-Router.route '/friends/:_id',
-  name: 'friend_show'
-  template: 'friend_show'
+Router.route '/palace/:_id',
+  name: 'palace.show'
+  template: 'palace_show'
   onBeforeAction: ->
     if !Meteor.user()
       Router.go('/')
@@ -77,13 +77,14 @@ Router.route '/friends/:_id',
       # Session.set('currentCommentableId', @params._id)
       this.next()
   waitOn: ->
+    user_id = @params._id
     Meteor.subscribe 'participations'
-    Meteor.subscribe 'projects'
-    Meteor.subscribe 'comments', 'Users', @params._id
+    Meteor.subscribe 'projects_by_user', user_id
+    # Meteor.subscribe 'comments', 'Users', user_id
     Meteor.subscribe 'friendships'
     Meteor.subscribe 'tokens'
     Meteor.subscribe 'users'
   data: ->
-    id = @params._id
-    id: id
-    user: Users.findOne id
+    user_id = @params._id
+    id: user_id
+    user: Users.findOne user_id

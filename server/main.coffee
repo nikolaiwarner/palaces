@@ -7,11 +7,11 @@ Meteor.publish "comments", (commentableType, commentableId) ->
 Meteor.publish "friendships", ->
   Friendships.find {}, sort: {createdAt: -1}
 
-Meteor.publish "participations", ->
-  Participations.find {}, sort: {createdAt: -1}
+Meteor.publish "participations_by_user", (userId) ->
+  Participations.find { userId: userId }, sort: {createdAt: -1}
 
-Meteor.publish "projects", ->
-  Projects.find {}, sort: {createdAt: -1}
+Meteor.publish "projects_by_user", (userId) ->
+  Projects.find { userId: userId }, sort: {createdAt: -1}
 
 Meteor.publish "tokens", ->
   Tokens.find {}, sort: {createdAt: -1}

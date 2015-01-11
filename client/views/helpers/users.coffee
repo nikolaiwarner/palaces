@@ -4,7 +4,7 @@ UI.registerHelper "username", (_id, options) ->
     user.profile.name
 
 UI.registerHelper "user_path", (_id, options) ->
-  "/friends/#{_id}"
+  "/palace/#{_id}"
 
 UI.registerHelper "userIsCurrentUser", (_id, options) ->
   return null unless _id
