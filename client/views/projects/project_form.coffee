@@ -22,6 +22,6 @@ AutoForm.hooks
 
 Template.project_form.helpers
   method: ->
-    if project._id then 'update' else 'insert'
+    if @project._id then 'update' else 'insert'
   currentProject: ->
-    project
+    @project
