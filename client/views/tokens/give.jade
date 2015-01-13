@@ -1,6 +1,6 @@
 template(name="token_give")
   .token_give.form-inline
-    input.to_user_id(type="hidden", value="{{_id}}")
-    input.project_id(type="hidden", value="{{projectId}}")
+    input.to_user_id(type="hidden", value="#{user._id}")
+    input.project_id(type="hidden", value="#{projectId}")
     input.form-control.amount(type="number", placeholder="1", value="1")
     .btn.btn-primary.btn-give Give

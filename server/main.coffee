@@ -10,6 +10,9 @@ Meteor.publish "friendships", ->
 Meteor.publish "participations_by_user", (userId) ->
   Participations.find { userId: userId }, sort: {createdAt: -1}
 
+Meteor.publish "project", (projectId) ->
+  Projects.find({_id: projectId })
+
 Meteor.publish "projects_by_user", (userId) ->
   Projects.find { userId: userId }, sort: {createdAt: -1}
 

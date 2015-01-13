@@ -11,8 +11,7 @@ Template.palace_show.events
 
 Template.palace_show.helpers
   friends: ->
-    friendships = Friendships.find
-      userId: @user._id
+    friendships = Friendships.find({ userId: @user._id })
     friends = []
     friendships.forEach (friendship) ->
       friends.push Users.findOne({_id: friendship.toUserId})
@@ -35,8 +34,8 @@ Template.palace_show.helpers
     if user=Users.findOne({_id: @user._id})
       Meteor.userId() == @user._id
   owes_tokens: ->
-    Tokens.find
-      userId: @user._id
+    tokens = Tokens.find({ userId : @user._id })
+    if tokens.count() > 0 then tokens else false
   owed_tokens: ->
-    Tokens.find
-      toUserId: @user._id
+    tokens = Tokens.find({ toUserId: @user._id })
+    if tokens.count() > 0 then tokens else false

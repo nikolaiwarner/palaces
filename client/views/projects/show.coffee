@@ -1,7 +1,7 @@
 Template.project_show.events
   'click .btn-join': (e) ->
     participation =
-      projectId: Session.get('selectedProjectId')
+      projectId: @project._id
     Participations.insert participation, (error, participation_id) =>
       if error
         FlashMessages.sendWarning(error.message)
@@ -27,5 +27,5 @@ Template.project_show.helpers
   userIsParticipating: ->
     participation = Participations.findOne
       userId: Meteor.userId()
-      projectId: Session.get('selectedProjectId')
+      projectId: @project._id
     participation

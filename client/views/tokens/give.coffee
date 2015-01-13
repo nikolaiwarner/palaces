@@ -20,7 +20,3 @@ Template.token_give.events
       FlashMessages.sendSuccess("You gave #{token_string}!")
     else
       FlashMessages.sendWarning("How many tokens?")
-
-Template.token_give.helpers
-  projectId: ->
-    Session.get('selectedProjectId')

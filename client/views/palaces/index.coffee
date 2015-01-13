@@ -1,3 +1,3 @@
-Template.friend_index.helpers
+Template.palace_index.helpers
   all_friends: ->
     Friendships.find(Meteor.userId())

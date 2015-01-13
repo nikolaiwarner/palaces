@@ -37,11 +37,10 @@ Router.route '/projects/:_id',
     if !Meteor.user()
       Router.go('/')
     else
-      console.log @params
       this.next()
   waitOn: ->
     project_id = @params._id
-    Meteor.subscribe 'projects_by_user', Meteor.userId()
+    Meteor.subscribe 'project', project_id
     Meteor.subscribe 'participations_by_project', project_id
     Meteor.subscribe 'users'
     # Meteor.subscribe 'comments', 'Projects', @params._id

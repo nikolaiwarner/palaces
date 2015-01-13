@@ -63,19 +63,24 @@ template(name="palace_show")
     section.give
       hr
       .row
-        .col-md-6          
-          if userHasFriendship
-            with userHasFriendship
-              .btn.btn-default.btn-unfriend(title='Unfriend')
-                i.fa.fa-child
-                i.fa.fa-child
-                |  You are friends!
-          else
-            .btn.btn-primary.btn-befriend
-              i.fa.fa-child
-              |  Add as a friend
         .col-md-6
-          //- | {{> token_give}}
+          if canEdit
+            a.btn.btn-default(href="/palace/#{_id}/settings") 
+              i.fa.fa-cog
+              |  Settings
+          else        
+            if userHasFriendship
+              with userHasFriendship
+                .btn.btn-default.btn-unfriend(title='Unfriend')
+                  i.fa.fa-child
+                  i.fa.fa-child
+                  |  You are friends!
+            else
+              .btn.btn-primary.btn-befriend
+                i.fa.fa-child
+                |  Add as a friend
+        .col-md-6
+          | {{> token_give}}
 
     section.friend_comments
       hr
