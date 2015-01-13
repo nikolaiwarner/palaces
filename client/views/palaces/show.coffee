@@ -16,9 +16,6 @@ Template.palace_show.helpers
     friendships.forEach (friendship) ->
       friends.push Users.findOne({_id: friendship.toUserId})
     friends
-  projects: ->
-    Projects.find
-      userId: @user._id
   project_participations: ->
     participations = Participations.find
       userId: @user._id

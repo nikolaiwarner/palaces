@@ -30,6 +30,22 @@ Router.route '/projects/new',
   waitOn: ->
     Meteor.subscribe 'projects_by_user', Meteor.userId()
 
+Router.route '/projects/:_id/completed',
+  name: 'project.completed'
+  template: 'project_completed'
+  onBeforeAction: ->
+    if !Meteor.user()
+      Router.go('/')
+    else
+      this.next()
+  waitOn: ->
+    Meteor.subscribe 'users'
+    Meteor.subscribe 'projects_by_user', @params._id
+  data: ->
+    user_id = @params._id
+    user: Users.findOne user_id
+    projects: Projects.find({ userId: user_id, status: 'complete' })
+
 Router.route '/projects/:_id',
   name: 'project.show'
   template: 'project_show'
@@ -86,4 +102,5 @@ Router.route '/palace/:_id',
   data: ->
     user_id = @params._id
     id: user_id
+    projects: Projects.find({ userId: @params._id, status: 'in progress' })
     user: Users.findOne user_id

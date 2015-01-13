@@ -9,7 +9,8 @@ template(name="palace_show")
 
     if projects
       section.projects
-        h2 Projects        
+        h2 Projects
+        a(href="/projects/#{user._id}/completed") Completed Projects
         each projects  
           .row      
             .col-sm-6
@@ -48,8 +49,8 @@ template(name="palace_show")
           each owed_tokens
             li
               a(href="/palace/#{userId}")
-                | {{username userId}} owes {{username toUserId}}:
-                | {{amount}}
+                | {{username userId}} owes {{username toUserId}}
+                | {{amount}} hours
 
     if friends
       section.friends
