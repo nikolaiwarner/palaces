@@ -50,3 +50,7 @@ comments_schema = new SimpleSchema
 
   remove: (userId, doc, fieldNames, modifier) ->
     userId && (doc.userId == userId)
+
+@Comments.deny
+  update: (userId, docs, fields, modifier) ->
+    return _.contains(fields, 'userId') # User can't change owner of doc

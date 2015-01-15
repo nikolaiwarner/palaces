@@ -2,6 +2,7 @@ template(name="project_completed")
   .actionbar
     .container
       a(href="/palace/#{user._id}")
+        img.avatar.avatar-sm.img-circle(src="{{avatar user._id}}")
         | {{username user._id}}'s Palace
   .container
     h1.page-header

@@ -8,6 +8,6 @@ UI.registerHelper "formatDate", (context, options={}) ->
   options.format = options.format || "MM/DD/YYYY"
   moment(context).format(options.format)
 
-UI.registerHelper "timeago", (context, options) ->
+UI.registerHelper "timeago", (context) ->
   return null unless context
   moment(context).fromNow()

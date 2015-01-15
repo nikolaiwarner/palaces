@@ -8,7 +8,6 @@ less
 coffeescript
 mrt:moment@2.6.0
 mrt:nprogress@0.0.5
-accounts-base
 accounts-google
 showdown
 jquery-layout
@@ -16,10 +15,8 @@ waitingkuo:jade
 iron:router
 mizzao:bootstrap-3
 aldeed:collection2
-joshowens:accounts-entry
 aldeed:autoform
 mrt:flash-messages
 chuangbo:marked
-tmeasday:gravatar
+jparker:gravatar
 mrt:accounts-ui-bootstrap-3-blaze
-

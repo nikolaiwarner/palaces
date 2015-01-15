@@ -1,7 +1,8 @@
 template(name="palace_show")
   .actionbar
     .container
-      | {{avatar email}}
+      .pull-left
+        img.avatar.img-circle(src="{{avatar user._id}}")
       | The Palace of
       h1.page-header
         .title {{username user._id}}      
@@ -16,7 +17,7 @@ template(name="palace_show")
               a(href="/palace/#{user._id}/settings") Settings
           else
             li.pull-right
-              a(href="/palace/#{user._id}/give") Give Tokens              
+              a(href="/give/#{user._id}") Give Credits              
             li.pull-right
               if userHasFriendship
                 with userHasFriendship
@@ -33,8 +34,9 @@ template(name="palace_show")
       section.projects(id='projects')
         h2 Projects
         ul.list-inline
-          li
-            a(href="/projects/new") Add a project
+          if canEdit
+            li
+              a(href="/projects/new") Add a project
           li
             a(href="/projects/#{user._id}/completed") Completed Projects
         each projects
@@ -54,7 +56,9 @@ template(name="palace_show")
             li
               a(href="/projects/#{_id}")
                 | {{name}}
-                |  at {{username userId}}'s Palace
+                |  at 
+                img.avatar.avatar-sm.img-circle(src="{{avatar userId}}")
+                | {{username userId}}'s Palace
                 if date
                   |  on {{formatDate date}}
 
@@ -65,7 +69,10 @@ template(name="palace_show")
           each owes_tokens
             li
               a(href="/palace/#{toUserId}")
-                | {{username userId}} owes {{username toUserId}}
+                img.avatar.avatar-sm.img-circle(src="{{avatar userId}}")
+                | {{username userId}} owes 
+                img.avatar.avatar-sm.img-circle(src="{{avatar toUserId}}")
+                | {{username toUserId}}
                 | {{amount}} hours
 
     if owed_tokens
@@ -75,7 +82,10 @@ template(name="palace_show")
           each owed_tokens
             li
               a(href="/palace/#{userId}")
-                | {{username userId}} owes {{username toUserId}}
+                img.avatar.avatar-sm.img-circle(src="{{avatar userId}}")
+                | {{username userId}} owes 
+                img.avatar.avatar-sm.img-circle(src="{{avatar toUserId}}")
+                | {{username toUserId}}                
                 | {{amount}} hours
 
     if friends
@@ -85,6 +95,7 @@ template(name="palace_show")
           each friends
             li
               a(href="/palace/#{_id}")
+                img.avatar.avatar-sm.img-circle(src="{{avatar _id}}")
                 | {{username _id}}
                 
     section.friend_comments

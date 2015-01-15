@@ -20,5 +20,8 @@ Meteor.publish "tokens", ->
   Tokens.find {}, sort: {createdAt: -1}
 
 Meteor.publish "users", ->
-  # Meteor.users.find({}, {fields: {'profile': 1, 'email': 1}})
-  Meteor.users.find({})
+  Meteor.users.find {},
+    fields:
+      'profile': 1
+      'email_md5': 1
+      'services.google.picture': 1
