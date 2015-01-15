@@ -1,7 +1,9 @@
-template(name="project_show")
-  .project_show
-    a(href="/palace/#{project.userId}")
-      | {{username project.userId}}'s Palace
+template(name="project_show")    
+  .actionbar
+    .container
+      a(href="/palace/#{project.userId}")
+        | {{username project.userId}}'s Palace
+  .container
     h1.page-header
       a.back-button(href="/palace/#{project.userId}") &#10094;
       .title

@@ -29,6 +29,8 @@ Router.route '/projects/new',
       this.next()
   waitOn: ->
     Meteor.subscribe 'projects_by_user', Meteor.userId()
+  data: ->
+    user: Meteor.user()
 
 Router.route '/projects/:_id/completed',
   name: 'project.completed'

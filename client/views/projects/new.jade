@@ -1,3 +1,8 @@
 template(name="project_new")
-  h1.page-header Add a project for your palace
-  +project_form
+  .actionbar
+    .container
+      a(href="/palace/#{user._id}")
+        | {{username user._id}}'s Palace
+  .container
+    h1.page-header Add a project for your palace
+    +project_form

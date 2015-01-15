@@ -18,6 +18,5 @@ template(name="layout")
           .navbar-collapse.collapse
             .nav.navbar-nav.navbar-right
               +loginButtons
-  .container
-    | {{> flashMessages}}
-    +yield
+  | {{> flashMessages}}
+  +yield

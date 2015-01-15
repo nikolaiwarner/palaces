@@ -1,3 +1,8 @@
 template(name="project_edit")
-  h1.page-header Project Settings
-  +project_form
+  .actionbar
+    .container
+      a(href="/palace/#{project.userId}")
+        | {{username project.userId}}'s Palace
+  .container
+    h1.page-header Project Settings
+    +project_form

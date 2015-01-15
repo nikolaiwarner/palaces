@@ -1,7 +1,9 @@
 template(name="project_completed")
-  .project_completed
-    a(href="/palace/#{user._id}")
-      | {{username user._id}}'s Palace
+  .actionbar
+    .container
+      a(href="/palace/#{user._id}")
+        | {{username user._id}}'s Palace
+  .container
     h1.page-header
       a.back-button(href="/palace/#{user._id}") &#10094;
       .title

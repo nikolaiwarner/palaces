@@ -1,17 +1,43 @@
 template(name="palace_show")
-  .friend_show
-    | {{avatar email}}
-    | The Palace of
-    h1.page-header
-      .title {{username user._id}}
-
-    hr
-
+  .actionbar
+    .container
+      | {{avatar email}}
+      | The Palace of
+      h1.page-header
+        .title {{username user._id}}      
+      .links
+        ul.list-inline
+          li
+            a(href="#projects") Projects
+          li
+            a(href="#friends") Friends
+          if canEdit
+            li.pull-right
+              a(href="/palace/#{user._id}/settings") Settings
+          else
+            li.pull-right
+              a(href="/palace/#{user._id}/give") Give Tokens              
+            li.pull-right
+              if userHasFriendship
+                with userHasFriendship
+                  a.btn-unfriend(title='Unfriend' href="#")
+                    i.fa.fa-child
+                    i.fa.fa-child
+                    |  You are friends!
+              else
+                a.btn-befriend(title='Add friend' href="#")
+                  i.fa.fa-child
+                  |  Add as a friend
+  .container                  
     if projects
-      section.projects
+      section.projects(id='projects')
         h2 Projects
-        a(href="/projects/#{user._id}/completed") Completed Projects
-        each projects  
+        ul.list-inline
+          li
+            a(href="/projects/new") Add a project
+          li
+            a(href="/projects/#{user._id}/completed") Completed Projects
+        each projects
           .row      
             .col-sm-6
               a(href="/projects/#{_id}") {{name}}
@@ -53,7 +79,7 @@ template(name="palace_show")
                 | {{amount}} hours
 
     if friends
-      section.friends
+      section.friends(id='friends')
         h2 Friends
         ul.list-inline
           each friends
@@ -61,28 +87,6 @@ template(name="palace_show")
               a(href="/palace/#{_id}")
                 | {{username _id}}
                 
-    section.give
-      hr
-      .row
-        .col-md-6
-          if canEdit
-            a.btn.btn-default(href="/palace/#{_id}/settings") 
-              i.fa.fa-cog
-              |  Settings
-          else        
-            if userHasFriendship
-              with userHasFriendship
-                .btn.btn-default.btn-unfriend(title='Unfriend')
-                  i.fa.fa-child
-                  i.fa.fa-child
-                  |  You are friends!
-            else
-              .btn.btn-primary.btn-befriend
-                i.fa.fa-child
-                |  Add as a friend
-        .col-md-6
-          | {{> token_give}}
-
     section.friend_comments
       hr
       .row
