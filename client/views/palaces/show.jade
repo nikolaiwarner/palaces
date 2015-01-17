@@ -39,19 +39,19 @@ template(name="palace_show")
               a(href="/projects/new") Add a project
           li
             a(href="/projects/#{user._id}/completed") Completed Projects
-        each projects
-          .row      
-            .col-sm-6
-              a(href="/projects/#{_id}") {{name}}
-            .col-sm-6
+        ul
+          each projects
+            li
+              a(href="/projects/#{_id}") {{name}}            
               if date
+                | &mdash;
                 a(href="/projects/#{_id}") {{formatDate date}}
               
 
     if project_participations
       section.helping
         h2 Helping
-        ul.list-unstyled
+        ul
           each project_participations
             li
               a(href="/projects/#{_id}")
@@ -65,28 +65,26 @@ template(name="palace_show")
     if owes_tokens
       section.owes
         h2 Time owed to friends
-        ul.list-inline
+        ul
           each owes_tokens
             li
               a(href="/palace/#{toUserId}")
-                img.avatar.avatar-sm.img-circle(src="{{avatar userId}}")
-                | {{username userId}} owes 
+                | {{amount}} hours to
                 img.avatar.avatar-sm.img-circle(src="{{avatar toUserId}}")
                 | {{username toUserId}}
-                | {{amount}} hours
+                
 
     if owed_tokens
       section.owed
-        h2 Friends awaiting reciprocation
-        ul.list-inline
+        h2 Friends who owe {{username user._id}}
+        ul
           each owed_tokens
             li
               a(href="/palace/#{userId}")
+                | {{amount}} hours from
                 img.avatar.avatar-sm.img-circle(src="{{avatar userId}}")
-                | {{username userId}} owes 
-                img.avatar.avatar-sm.img-circle(src="{{avatar toUserId}}")
-                | {{username toUserId}}                
-                | {{amount}} hours
+                | {{username userId}}
+                
 
     if friends
       section.friends(id='friends')

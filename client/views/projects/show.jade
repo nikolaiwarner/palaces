@@ -29,13 +29,13 @@ template(name="project_show")
 
         a.btn.btn-default(href="/projects/#{project._id}/edit") Settings
 
-    if date
+    if project.date
       section.date
         i.fa.fa-calendar
         |  {{formatDate project.date}}
 
 
-    if description
+    if project.description
       section.description
         +markdown
           | {{project.description}}
